@@ -1,0 +1,177 @@
+### show all tickets
+GET https://localhost:8080/tickets
+Accept: application/json
+
+### login using jwt token
+POST https://localhost:8080/generateToken
+Content-Type: application/json
+
+{
+    "username": "Shawn",
+    "password": "hello123"
+}
+
+### delete ticket
+DELETE https://localhost:8080/tickets/2
+Authorization: Bearer eyJciOiJIUzI1NiJ9.eyJzdWIiOiJTaGF3biIsImlhdCI6MTY5OTMxOTAzMSwiZXhwIjoxNjk5MzIwODMxfQ.dzAdctq976kM04GB0O-Flv4zvjM-JmL6FhvFIaz24q0
+
+### add ticket
+POST https://localhost:8080/tickets
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJTaGF3biIsImlhdCI6MTY5OTMxOTAzMSwiZXhwIjoxNjk5MzIwODMxfQ.dzAdctq976kM04GB0O-Flv4zvjM-JmL6FhvFIaz24q0
+
+{
+    "title": "Lee Youngji",
+    "ticket_number": "78955611",
+    "seat_number": "1cxCV6afasfsa",
+    "unit_price" : 500
+}
+
+### update ticket
+PUT https://localhost:8080/tickets/3
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJTaGF3biIsImlhdCI6MTY5OTMxOTAzMSwiZXhwIjoxNjk5MzIwODMxfQ.dzAdctq976kM04GB0O-Flv4zvjM-JmL6FhvFIaz24q0
+
+{
+    "title": "TXT Concert",
+    "ticket_number": "789",
+    "seat_number": "1cxCV6",
+    "unit_price": 100
+}
+
+### show all users
+GET https://localhost:8080/users
+
+### user sign-up
+POST https://localhost:8080/users
+Content-Type: application/json
+
+{
+    "username": "zhirong",
+    "password": "1234567898",
+    "authorities": "ROLE_USER",
+    "email": "zhirong@gmail.com",
+    "address": "asdesdsaddsaads",
+    "phone_num": "32165498"
+}
+
+
+### show specific ticket
+GET https://localhost:8080/tickets/1
+
+### user buys ticket
+PUT https://localhost:8080/tickets/updateAvailability/22
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJTaGF3biIsImlhdCI6MTY5OTMxOTAzMSwiZXhwIjoxNjk5MzIwODMxfQ.dzAdctq976kM04GB0O-Flv4zvjM-JmL6FhvFIaz24q0
+
+{
+    "available" : false
+}
+
+### insert transaction into the database
+POST https://localhost:8080/Transactions
+Content-Type: application/json
+
+{
+    "total_price": 800,
+    "user_id": 1
+}
+
+### admin can add new event
+POST https://localhost:8080/eventInfo
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJTaGF3biIsImlhdCI6MTY5OTMxOTAzMSwiZXhwIjoxNjk5MzIwODMxfQ.dzAdctq976kM04GB0O-Flv4zvjM-JmL6FhvFIaz24q0
+
+{
+    "eventName" : "blah blah boo",
+    "eventDetail" : [
+        "this is blah",
+        "this is boo"
+    ],
+
+    "date" : "7 November 2023",
+    "location" : "SMU BUILDING",
+    "ticketPricing" : "Ticket Price: 1 million dollar",
+    "imageURL" : "fake image"
+}
+
+###
+PUT https://localhost:8080/eventInfo/2
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJTaGF3biIsImlhdCI6MTY5OTMxOTAzMSwiZXhwIjoxNjk5MzIwODMxfQ.dzAdctq976kM04GB0O-Flv4zvjM-JmL6FhvFIaz24q0
+
+{
+    "eventName" : "blah blah boo",
+    "eventDetail" : [
+        "this is blah",
+        "this is boo"
+    ],
+
+    "date" : "7 November 2023",
+    "location" : "SMU BUILDING",
+    "ticketPricing" : "Ticket Price: 1 million dollar",
+    "imageURL" : "fake image"
+}
+
+###
+DELETE https://localhost:8080/eventInfo/8
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJTaGF3biIsImlhdCI6MTY5OTMxOTAzMSwiZXhwIjoxNjk5MzIwODMxfQ.dzAdctq976kM04GB0O-Flv4zvjM-JmL6FhvFIaz24q0
+
+#####################################################
+Post https://localhost:8080/users
+Content-Type: application/json
+
+{
+    "username": "Janaaaaa",
+    "password": "goodpassword",
+    "email": "blessed.me.luck@gmail.com",
+    "address": "SMU building",
+    "phone_num": "32165498"
+}
+
+###
+POST https://localhost:8080/register
+Content-Type: application/json
+
+{
+    "username": "Janaaaaa",
+    "password": "goodpassword",
+    "email": "blessed.e.luck@gmail.com",
+    "address": "SMU building",
+    "phone_num": "32165498"
+}
+
+###
+
+POST https://localhost:8080/login
+Content-Type: application/json
+
+{
+    "username": "Shawn",
+    "password": "hello123"
+}
+
+###
+PUT https://localhost:8080/successfulTransaction/3
+
+
+
+###
+POST http://localhost:8080/tickets
+Content-Type: application/json
+Authorization: Basic Shawn hello123
+# Authorization: Basic Janaaaaa goodpassword
+
+{
+    "title" : "this is the title",
+    "ticket_number": "ZZ123",
+    "seat_number" : "12345678",
+    "unit_price" : 1000,
+    "available" : true
+}
+
+###
+GET http://localhost:8080/tickets/25
+
+
+
